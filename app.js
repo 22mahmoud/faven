@@ -49,7 +49,7 @@ window.app = function () {
       this.filename = file.name;
 
       const promises = [];
-      for (const target in targets) {
+      for (const target of targets) {
         promises.push(
           compressImage(file, {
             width: target.size,
