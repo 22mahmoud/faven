@@ -8,12 +8,18 @@
     <script src="app.js" type="module" defer></script>
   </head>
   <body
-    class="flex justify-center w-screen h-screen bg-gray-900"
+    class="flex flex-col w-screen h-screen max-w-md py-8 mx-auto bg-gray-900"
     x-data="app()"
   >
-    <div class="flex flex-col justify-center max-w-sm">
-      <div class="flex text-gray-800 bg-gray-200">
-        <label class="px-4 py-6 cursor-pointer">
+    <header>
+      <a href="/"><h3 class="text-3xl text-gray-200">Faven</h3></a>
+    </header>
+    <main class="flex flex-col justify-center flex-1 max-w-md">
+      <div
+        class="flex text-gray-800 bg-gray-200 rounded-md"
+        x-bind:class="{ 'rounded-b-none': filename }"
+      >
+        <label class="w-full px-4 py-6 text-center cursor-pointer">
           <span class="">Select an image</span>
 
           <input
@@ -24,15 +30,15 @@
         /></label>
       </div>
       <div
-        x-show="filename"
-        class="flex px-4 py-2 text-gray-200 truncate bg-gray-800"
+        x-show.transition.in.duration.200ms.origin.top="filename"
+        class="flex px-4 py-2 text-gray-200 truncate bg-gray-800 rounded-b-md"
       >
         <p x-text="filename" class="flex-1 truncate"></p>
 
-        <a class="ml-6" x-bind:href="href" download="faven.zip">
+        <a class="ml-6 underline" x-bind:href="href" download="faven.zip">
           Download
         </a>
       </div>
-    </div>
+    </main>
   </body>
 </html>

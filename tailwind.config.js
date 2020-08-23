@@ -1,7 +1,11 @@
 module.exports = {
   purge: false,
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ["Alata"],
+      },
+    },
   },
   future: {
     removeDeprecatedGapUtilities: true,

@@ -4,27 +4,11 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-.file-input {
-  visibility: hidden;
-}
-
-.file-input::before {
-  content: "Select some files";
-  display: inline-block;
-  background: red;
-  border: 1px solid #999;
-  border-radius: 3px;
-  padding: 5px 8px;
-  outline: none;
-  white-space: nowrap;
-  -webkit-user-select: none;
-  cursor: pointer;
-  text-shadow: 1px 1px #fff;
-  font-weight: 700;
-}
-.custom-file-input:hover::before {
-  border-color: black;
-}
-.custom-file-input:active::before {
-  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+@font-face {
+  font-family: "Alata";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Alata Regular"), local("Alata-Regular"),
+    url("./fonts/alata-v2-latin-regular.woff2") format("woff2"),
+    url("./fonts/alata-v2-latin-regular.woff") format("woff");
 }
