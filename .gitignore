@@ -3,4 +3,5 @@ build
 sw.js
 sw.js.map
 workbox*
+!workbox-config.js
 yarn-error.log
