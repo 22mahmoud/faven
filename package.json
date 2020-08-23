@@ -1,0 +1,29 @@
+{
+  "name": "favico-gen",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "22mahmoud <mahmoudss1997@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "snowpack dev",
+    "build": "snowpack build"
+  },
+  "dependencies": {
+    "alpinejs": "^2.6.0",
+    "compressorjs": "^1.0.6"
+  },
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^2.3.0",
+    "@snowpack/plugin-postcss": "^1.0.2",
+    "autoprefixer": "^9.8.6",
+    "cssnano": "^4.1.10",
+    "postcss": "^7.0.32",
+    "postcss-cli": "^7.1.1",
+    "postcss-html": "^0.36.0",
+    "postcss-import": "^12.0.1",
+    "postcss-syntax": "^0.36.2",
+    "rollup-plugin-node-polyfills": "^0.2.1",
+    "snowpack": "^2.9.0",
+    "tailwindcss": "^1.7.3"
+  }
+}
