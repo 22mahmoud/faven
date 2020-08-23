@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "alpinejs": "^2.6.0",
-    "compressorjs": "^1.0.6"
+    "compressorjs": "^1.0.6",
+    "jszip": "^3.5.0"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^2.3.0",
