@@ -60,10 +60,26 @@ window.app = function () {
       }
 
       const images = await Promise.all(promises);
+      console.log(images);
       this.href = await zipFiles(images);
     },
   };
 };
+
+const isProd = import.meta.env.MODE === "production";
+
+if (isProd && "serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("/sw.js")
+      .then(() => {
+        console.log("sw.js is loaded");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  });
+}
 
 const targets = [
   { size: 57, name: "apple-icon-57x57.png" },
@@ -90,9 +106,15 @@ const targets = [
     size: 180,
     name: "apple-icon-180x180.png",
   },
+  { size: 36, name: "android-icon-36x36.png" },
+  { size: 48, name: "android-icon-48x48.png" },
+  { size: 72, name: "android-icon-72x72.png" },
+  { size: 96, name: "android-icon-96x96.png" },
+  { size: 144, name: "android-icon-144x144.png" },
   { size: 192, name: "android-icon-192x192.png" },
   { size: 32, name: "favicon-32x32.png" },
   { size: 96, name: "favicon-96x96.png" },
   { size: 16, name: "favicon-16x16.png" },
+  { size: 16, name: "favicon.ico" },
   { size: 144, name: "ms-icon-144x144.png" },
 ];

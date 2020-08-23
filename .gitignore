@@ -1,2 +1,6 @@
 node_modules
 build
+sw.js
+sw.js.map
+workbox*
+yarn-error.log
