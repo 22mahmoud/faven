@@ -3,14 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>faven</title>
+    <title>faven - generate your favcion in the browser</title>
     <link rel="stylesheet" href="app.css" />
     <script src="app.js" type="module" defer></script>
   </head>
-  <body class="w-screen h-screen bg-gray-500">
-    <div x-data="app()">
-      <input @change="handleFileInputChange" type="file" accept="image/*" />
-      <a x-bind:href="href" download="faven.zip"> Download </a>
+  <body
+    class="flex justify-center w-screen h-screen bg-gray-900"
+    x-data="app()"
+  >
+    <div class="flex flex-col justify-center max-w-sm">
+      <div class="flex text-gray-800 bg-gray-200">
+        <label class="px-4 py-6 cursor-pointer">
+          <span class="">Select an image</span>
+
+          <input
+            class="hidden"
+            @change="handleFileInputChange"
+            type="file"
+            accept="image/*"
+        /></label>
+      </div>
+      <div
+        x-show="filename"
+        class="flex px-4 py-2 text-gray-200 truncate bg-gray-800"
+      >
+        <p x-text="filename" class="flex-1 truncate"></p>
+
+        <a class="ml-6" x-bind:href="href" download="faven.zip">
+          Download
+        </a>
+      </div>
     </div>
   </body>
 </html>
