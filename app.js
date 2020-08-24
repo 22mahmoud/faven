@@ -4,8 +4,6 @@ import Compressor from "compressorjs";
 import marked from "marked";
 import prism from "prismjs";
 
-import "./node_modules/prismjs/themes/prism.css";
-
 import manifest from "./assets/manifest.json";
 
 const renderer = new marked.Renderer();
