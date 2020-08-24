@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "snowpack dev",
-    "build": "workbox generateSW && snowpack build"
+    "build": "snowpack build && workbox generateSW"
   },
   "dependencies": {
     "alpinejs": "^2.6.0",
