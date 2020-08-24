@@ -87,18 +87,24 @@
       content="./assets/ms-icon-144x144.png"
     />
     <meta name="theme-color" content="#e2e8f0" />
+    <style>
+      [x-cloak] {
+        display: none;
+      }
+    </style>
     <script src="app.js" type="module" defer></script>
   </head>
   <body
-    class="flex flex-col w-screen h-screen max-w-md py-8 mx-auto bg-gray-900"
-    x-data="app()"
+    x-cloak
+    class="flex flex-col w-screen h-screen max-w-md px-4 py-8 mx-auto bg-gray-900"
+    x-data="{...app(), open: false}"
   >
     <header>
-      <a href="/"><h3 class="text-3xl text-gray-200">Faven</h3></a>
+      <a class="text-green-200" href="/"><h3 class="text-3xl">Faven</h3></a>
     </header>
     <main class="flex flex-col justify-center flex-1 max-w-md">
       <div
-        class="flex text-gray-800 bg-gray-200 rounded-md"
+        class="flex text-gray-800 bg-green-200 rounded-md"
         x-bind:class="{ 'rounded-b-none': filename }"
       >
         <label class="w-full px-4 py-6 text-center cursor-pointer">
@@ -117,10 +123,50 @@
       >
         <p x-text="filename" class="flex-1 truncate"></p>
 
-        <a class="ml-6 underline" x-bind:href="href" download="faven.zip">
+        <a
+          role="button"
+          class="ml-6 underline"
+          x-bind:href="href"
+          download="faven.zip"
+        >
           Download
         </a>
       </div>
     </main>
+
+    <footer class="flex underline">
+      <ul class="flex ml-auto">
+        <li class="ml-6 text-green-200">
+          <a @click="open = true" role="button">How To use</a>
+          <div
+            class="absolute top-0 left-0 flex items-center justify-center w-full h-full py-16"
+            style="background-color: rgba(0, 0, 0, 0.2);"
+            x-show="open"
+          >
+            <div
+              class="h-full p-4 py-3 mx-2 overflow-x-hidden overflow-y-auto text-left bg-white rounded shadow-xl ma md:max-w-2xl md:p-6 lg:p-8 md:mx-0"
+              @click.away="open = false"
+            >
+              <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                <h3 class="text-lg font-medium text-gray-900 leading-6">
+                  How to use favicons on your project.
+                </h3>
+
+                <p class="my-4 text-sm text-gray-800">
+                  After generating a favicon with this tool download and save to
+                  the directory of your site. Then include the following code in
+                  the head of your HTML document.
+                </p>
+
+                <div x-html="howToUse" class="mt-2"></div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="ml-6 text-green-200">
+          <a href="https://github.com/22mahmoud/faven">github </a>
+        </li>
+      </ul>
+    </footer>
   </body>
 </html>
