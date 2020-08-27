@@ -184,10 +184,8 @@
         @dragover="handleDragOver"
         @dragleave="handleDragLeave"
       >
-        <label x-cloak class="w-full px-4 py-6 text-center cursor-pointer">
-          <template x-if="!loading">
-            <span>Select/Drag an image</span>
-          </template>
+        <label class="w-full px-4 py-6 text-center cursor-pointer">
+          <span :class="{ 'hidden': loading }">Select/Drag an image</span>
 
           <template x-if="loading">
             <span>Generating...</span>
@@ -225,7 +223,7 @@
           <div
             x-cloak
             class="absolute top-0 left-0 flex items-center justify-center w-full h-full py-16"
-            style="background-color: rgba(0, 0, 0, 0.2);"
+            style="background-color: rgba(0, 0, 0, 0.2)"
             x-show="open"
           >
             <div
