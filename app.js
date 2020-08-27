@@ -85,12 +85,33 @@ window.app = function () {
     href: "",
     filename: "",
     howToUse: marked(md, { renderer }),
+    dragEnter: false,
 
-    async handleFileInputChange(e) {
-      const file = e.target.files[0];
+    handleDragOver(e) {
+      e.preventDefault();
+      this.dragEnter = true;
+    },
 
-      if (!file) return;
+    handleDragLeave(e) {
+      e.preventDefault();
+      this.dragEnter = false;
+    },
 
+    handleOnDrop(e) {
+      e.preventDefault();
+      const { items } = e.dataTransfer;
+      if (items.length > 1) return;
+
+      const file = e.dataTransfer.items[0].getAsFile();
+
+      if (!file.type.match(/image.*/)) return;
+
+      this.generateFavicons(file);
+
+      this.dragEnter = false;
+    },
+
+    async generateFavicons(file) {
       this.filename = file.name;
 
       const promises = [];
@@ -106,6 +127,14 @@ window.app = function () {
 
       const images = await Promise.all(promises);
       this.href = await zipFiles(images);
+    },
+
+    async handleFileInputChange(e) {
+      const file = e.target.files[0];
+
+      if (!file) return;
+
+      await this.generateFavicons(file);
     },
   };
 };
