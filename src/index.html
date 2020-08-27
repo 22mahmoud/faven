@@ -175,7 +175,8 @@
     <header>
       <a class="text-green-200" href="/"><h3 class="text-3xl">Faven</h3></a>
     </header>
-    <main class="flex flex-col justify-center flex-1 max-w-md">
+    <canvas class="absolute inset-0 z-10 w-full h-full" id="canvas"></canvas>
+    <main class="z-20 flex flex-col justify-center flex-1 max-w-md bg-gray-900">
       <div
         class="flex text-gray-800 bg-green-200 rounded-md transition-all duration-500 ease-in-out"
         :class="{ 'transform  scale-110': dragEnter, 'rounded-b-none': href }"

@@ -1,6 +1,7 @@
 import "alpinejs";
 import marked from "marked";
 import prism from "prismjs";
+import confetti from "canvas-confetti";
 
 import { md } from "./utils/how-to-use";
 import { getTargets } from "./utils/targets";
@@ -95,6 +96,10 @@ window.app = function () {
       ]);
 
       this.loading = false;
+      confetti.create(document.getElementById("canvas") as HTMLCanvasElement, {
+        resize: true,
+        useWorker: true,
+      })({ particleCount: 200, spread: 200 });
     },
 
     async handleFileInputChange(e: Event) {
