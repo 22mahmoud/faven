@@ -1,3 +1,4 @@
+import "alpinejs";
 import JSZip from "jszip";
 import Compressor from "compressorjs";
 import marked from "marked";
