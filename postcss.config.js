@@ -1,12 +1,13 @@
-const postcssImport = require("postcss-import");
-const purgecss = require("@fullhuman/postcss-purgecss");
-const autoprefixer = require("autoprefixer");
-const cssnano = require("cssnano");
-const tailwindcss = require("tailwindcss");
+/* eslint-disable */
+const postcssImport = require('postcss-import');
+const purgecss = require('@fullhuman/postcss-purgecss');
+const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
+const tailwindcss = require('tailwindcss');
 
-const tailwindcssConfig = require("./tailwind.config");
+const tailwindcssConfig = require('./tailwind.config');
 
-const production = process.env.NODE_ENV === "production";
+const production = process.env.NODE_ENV === 'production';
 
 module.exports = {
   plugins: [
@@ -29,7 +30,7 @@ module.exports = {
 
     production &&
       cssnano({
-        preset: ["default", { discardComments: { removeAll: true } }],
+        preset: ['default', { discardComments: { removeAll: true } }],
       }),
   ].filter(Boolean),
 

@@ -3,7 +3,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Alata"],
+        sans: ['Alata'],
       },
     },
   },

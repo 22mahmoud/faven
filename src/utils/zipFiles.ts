@@ -1,4 +1,4 @@
-import JSZip from "jszip";
+import JSZip from 'jszip';
 
 interface ConfigFile {
   content: string;
@@ -25,7 +25,7 @@ export async function zipFiles(
     );
   });
 
-  const outzip = await zip.generateAsync({ type: "blob" });
+  const outzip = await zip.generateAsync({ type: 'blob' });
 
   return URL.createObjectURL(outzip);
 }

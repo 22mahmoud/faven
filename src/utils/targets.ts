@@ -55,4 +55,4 @@ export const getTargets = (): Target[] =>
         name,
       };
     })
-    .concat([{ name: "favicon.ico", width: 16, height: 16 }]);
+    .concat([{ name: 'favicon.ico', width: 16, height: 16 }]);

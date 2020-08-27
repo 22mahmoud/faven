@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "**/src/**/*.ts",
+    ".eslintrc.js",
+    "postcss.config.js",
+    "snowpack.config.js",
+    "tailwind.config.js",
+    "workbox-config.js"
+  ],
+  "exclude": ["node_modules"]
+}

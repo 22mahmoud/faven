@@ -3,6 +3,7 @@
     "module": "esnext",
     "target": "esnext",
     "moduleResolution": "node",
+    "allowJs": true,
     "jsx": "preserve",
     "allowSyntheticDefaultImports": true,
     "importsNotUsedAsValues": "error",
@@ -17,6 +18,6 @@
     "baseUrl": "./",
     "paths": { "*": ["web_modules/.types/*"] }
   },
-  "include": ["src", "default.d.ts"],
+  "include": ["**/src/**/*.ts", "default.d.ts"],
   "exclude": ["node_modules"]
 }

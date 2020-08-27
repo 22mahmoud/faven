@@ -1,30 +1,30 @@
-import "alpinejs";
-import marked from "marked";
-import prism from "prismjs";
-import confetti from "canvas-confetti";
+import 'alpinejs';
+import marked from 'marked';
+import prism from 'prismjs';
+import confetti from 'canvas-confetti';
 
-import { md } from "./utils/how-to-use";
-import { getTargets } from "./utils/targets";
+import { md } from './utils/how-to-use';
+import { getTargets } from './utils/targets';
 import {
   yandexManifest,
   browserconfig,
   manifestJson,
   manifestWebapp,
-} from "./utils/configFiles";
-import { compressImage } from "./utils/compressImage";
-import { zipFiles } from "./utils/zipFiles";
+} from './utils/configFiles';
+import { compressImage } from './utils/compressImage';
+import { zipFiles } from './utils/zipFiles';
 
 const renderer = new marked.Renderer();
 
-renderer.code = (source, lang = "") => {
+renderer.code = (source, lang = '') => {
   const html = prism.highlight(source, prism.languages[lang], lang);
   return `<pre class='language-${lang}'><code>${html}</code></pre>`;
 };
 
-window.app = function () {
+window.app = function app() {
   return {
-    href: "",
-    filename: "",
+    href: '',
+    filename: '',
     loading: false,
     howToUse: marked(md, { renderer }),
     dragEnter: false,
@@ -55,13 +55,13 @@ window.app = function () {
     },
 
     async generateFavicons(file: File) {
-      this.href = "";
+      this.href = '';
       this.loading = true;
       this.filename = file.name;
 
-      const promises = [];
+      const promises: Promise<File>[] = [];
       const targets = getTargets();
-      for (const { height, width, name } of targets) {
+      targets.forEach(({ height, width, name }) => {
         promises.push(
           compressImage(file, {
             height,
@@ -69,34 +69,34 @@ window.app = function () {
             name,
           })
         );
-      }
+      });
 
       const images = await Promise.all(promises);
       this.href = await zipFiles(images, [
         {
-          name: "manifest.json",
+          name: 'manifest.json',
           content: manifestJson,
-          type: "application/json",
+          type: 'application/json',
         },
         {
-          name: "manifest.webapp",
+          name: 'manifest.webapp',
           content: manifestWebapp,
-          type: "text/webapp",
+          type: 'text/webapp',
         },
         {
-          name: "yandex-browser-manifest.json",
+          name: 'yandex-browser-manifest.json',
           content: yandexManifest,
-          type: "application/json",
+          type: 'application/json',
         },
         {
-          name: "browserconfig.xml",
+          name: 'browserconfig.xml',
           content: browserconfig,
-          type: "text/xml",
+          type: 'text/xml',
         },
       ]);
 
       this.loading = false;
-      confetti.create(document.getElementById("canvas") as HTMLCanvasElement, {
+      confetti.create(document.getElementById('canvas') as HTMLCanvasElement, {
         resize: true,
         useWorker: true,
       })({ particleCount: 200, spread: 200 });
@@ -113,17 +113,19 @@ window.app = function () {
   };
 };
 
-const isProd = import.meta.env.MODE === "production";
+const isProd = import.meta.env.MODE === 'production';
 
-if (isProd && "serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
+if (isProd && 'serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
     navigator.serviceWorker
-      .register("/sw.js")
+      .register('/sw.js')
+      /* eslint-disable */
       .then(() => {
-        console.log("sw.js is loaded");
+        console.log('sw.js is loaded');
       })
       .catch((error) => {
         console.error(error);
       });
+    /* eslint-enable */
   });
 }
