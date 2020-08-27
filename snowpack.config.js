@@ -1,17 +1,17 @@
 module.exports = {
   mount: {
-    src: "/",
+    src: '/',
   },
   clean: true,
   plugins: [
     [
-      "@snowpack/plugin-run-script",
-      { cmd: "tsc --noEmit", watch: "$1 --watch" },
+      '@snowpack/plugin-run-script',
+      { cmd: 'tsc --noEmit', watch: '$1 --watch' },
     ],
 
     [
-      "@snowpack/plugin-build-script",
-      { cmd: "postcss", input: [".css"], output: [".css"] },
+      '@snowpack/plugin-build-script',
+      { cmd: 'postcss', input: ['.css'], output: ['.css'] },
     ],
   ],
   installOptions: {

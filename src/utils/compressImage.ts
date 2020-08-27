@@ -1,4 +1,4 @@
-import Compressor from "compressorjs";
+import Compressor from 'compressorjs';
 
 interface CompressImageOptins {
   width: number;
