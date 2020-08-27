@@ -1,4 +1,3 @@
-import "alpinejs";
 import JSZip from "jszip";
 import Compressor from "compressorjs";
 import marked from "marked";
@@ -8,7 +7,6 @@ import manifest from "./assets/manifest.json";
 
 const renderer = new marked.Renderer();
 
-// use hljs to highlight our blaock of codes
 renderer.code = (source, lang = "") => {
   const html = prism.highlight(source, prism.languages[lang], lang);
   return `<pre class='language-${lang}'><code>${html}</code></pre>`;
@@ -39,7 +37,16 @@ const md = `
 \`\`\`
 `;
 
-async function compressImage(file, { width, height, name }) {
+interface CompressImageOptins {
+  width: number;
+  height: number;
+  name: string;
+}
+
+async function compressImage(
+  file: File,
+  { width, height, name }: CompressImageOptins
+): Promise<File> {
   return new Promise(
     (resolve, reject) =>
       new Compressor(file, {
@@ -59,7 +66,7 @@ async function compressImage(file, { width, height, name }) {
   );
 }
 
-async function zipFiles(files) {
+async function zipFiles(files: File[]): Promise<string> {
   const zip = new JSZip();
 
   files.forEach((file) => {
@@ -87,31 +94,32 @@ window.app = function () {
     howToUse: marked(md, { renderer }),
     dragEnter: false,
 
-    handleDragOver(e) {
+    handleDragOver(e: DragEvent) {
       e.preventDefault();
       this.dragEnter = true;
     },
 
-    handleDragLeave(e) {
+    handleDragLeave(e: DragEvent) {
       e.preventDefault();
       this.dragEnter = false;
     },
 
-    handleOnDrop(e) {
+    handleOnDrop(e: DragEvent) {
       e.preventDefault();
-      const { items } = e.dataTransfer;
+      const items = e.dataTransfer?.items ?? [];
+
       if (items.length > 1) return;
 
-      const file = e.dataTransfer.items[0].getAsFile();
+      const file = items[0].getAsFile();
 
-      if (!file.type.match(/image.*/)) return;
+      if (!file || !file.type.match(/image.*/)) return;
 
       this.generateFavicons(file);
 
       this.dragEnter = false;
     },
 
-    async generateFavicons(file) {
+    async generateFavicons(file: File) {
       this.filename = file.name;
 
       const promises = [];
@@ -129,8 +137,9 @@ window.app = function () {
       this.href = await zipFiles(images);
     },
 
-    async handleFileInputChange(e) {
-      const file = e.target.files[0];
+    async handleFileInputChange(e: Event) {
+      const target = e.target as HTMLInputElement;
+      const file = target.files?.[0];
 
       if (!file) return;
 

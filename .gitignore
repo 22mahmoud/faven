@@ -5,3 +5,4 @@ sw.js.map
 workbox*
 !workbox-config.js
 yarn-error.log
+web_modules
