@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "snowpack dev",
-    "build": "snowpack build && workbox generateSW"
+    "build": "snowpack build && workbox generateSW",
+    "postinstall": "typesync"
   },
   "dependencies": {
     "alpinejs": "^2.6.0",
@@ -18,6 +19,12 @@
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^2.3.0",
     "@snowpack/plugin-postcss": "^1.0.2",
+    "@types/autoprefixer": "^9.7.2",
+    "@types/cssnano": "^4.0.0",
+    "@types/marked": "^1.1.0",
+    "@types/postcss-import": "^12.0.0",
+    "@types/prismjs": "^1.16.1",
+    "@types/snowpack-env": "^2.3.0",
     "autoprefixer": "^9.8.6",
     "cssnano": "^4.1.10",
     "postcss": "^7.0.32",
@@ -28,6 +35,8 @@
     "rollup-plugin-node-polyfills": "^0.2.1",
     "snowpack": "^2.9.0",
     "tailwindcss": "^1.7.3",
+    "typescript": "^4.0.2",
+    "typesync": "^0.7.0",
     "workbox-cli": "^5.1.3"
   }
 }
