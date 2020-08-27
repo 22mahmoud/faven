@@ -1,0 +1,14 @@
+{
+  "version": "1.0.0",
+  "name": "faven-example",
+  "description": "Demo of faven",
+  "icons": {
+    "60": "./favicon-60x60.png",
+    "128": "./favicon-128x128.png",
+    "512": "./favicon-512x512.png"
+  },
+  "developer": {
+    "name": null,
+    "url": null
+  }
+}
