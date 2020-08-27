@@ -1,4 +1,7 @@
 module.exports = {
+  mount: {
+    src: "/",
+  },
   sourceMap: true,
   clean: true,
   plugins: [
