@@ -108,11 +108,14 @@
     </header>
     <main class="flex flex-col justify-center flex-1 max-w-md">
       <div
-        class="flex text-gray-800 bg-green-200 rounded-md"
-        x-bind:class="{ 'rounded-b-none': filename }"
+        class="flex text-gray-800 bg-green-200 rounded-md transition-all duration-500 ease-in-out"
+        :class="{ 'transform  scale-110': dragEnter, 'rounded-b-none': filename }"
+        @drop="handleOnDrop"
+        @dragover="handleDragOver"
+        @dragleave="handleDragLeave"
       >
         <label class="w-full px-4 py-6 text-center cursor-pointer">
-          <span class="">Select an image</span>
+          <span class="">Select/Drag an image</span>
 
           <input
             class="hidden"

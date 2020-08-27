@@ -11,6 +11,7 @@
 ## Key Features
 
 * browser based no data sent to the server.
+* You can select or drag your image.
 * works offline.
 * generate all favicons dimensions.
 
