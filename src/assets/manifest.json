@@ -1,14 +1,14 @@
 {
-  "name": "faven-example",
-  "short_name": "faven-example",
-  "description": "Demo of faven",
+  "name": "Faven",
+  "short_name": "Faven",
+  "description": "Faven is a web tool help you generate assets/favicons from your image",
   "dir": "auto",
   "lang": "en-US",
   "display": "standalone",
   "orientation": "any",
   "start_url": "/",
-  "background_color": "#fff",
-  "theme_color": "#fff",
+  "background_color": "#1a202c",
+  "theme_color": "#1a202c",
   "icons": [
     {
       "src": "./favicon-36x36.png",
@@ -57,3 +57,4 @@
     }
   ]
 }
+
