@@ -210,6 +210,11 @@
           class="ml-6 underline"
           x-bind:href="href"
           download="faven.zip"
+          @click="window.goatcounter.count({
+            path:  'click-download',
+            title: 'Download favicons',
+            event: true,
+          })"
         >
           Download
         </a>
